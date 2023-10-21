@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bandeiras oficiais - Copa do Mundo Futebol Feminino 2023</title>
+    <link rel="icon" href="./images/logofifa.png" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .continents-list {
+            list-style-type: none;
+            display: flex;
+            justify-content: space-around;
+            padding: 0;
+            margin: 0;
+        }
+
+        .continent {
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .continent:hover {
+            background-color: #555;
+        }
+
+        .countries {
+            display: none;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+            background-color: white;
+        }
+
+        .country {
+            text-align: center;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        .country img {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .country p {
+            margin: 0;
+            color: black;
+        }
+
+        .country a {
+            text-decoration: none;
+        }
+
+        .background-image {
+            background-image: url("./images/copa-do-mundo-2023-scaled.jpg");
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <ul class="continents-list">
+            <li class="continent" onclick="toggleContinent('Europa')">Europa</li>
+            <li class="continent" onclick="toggleContinent('Ásia')">Ásia</li>
+            <li class="continent" onclick="toggleContinent('Oceania')">Oceania</li>
+            <li class="continent" onclick="toggleContinent('América')">América</li>
+            <li class="continent" onclick="toggleContinent('África')">África</li>
+        </ul>
+    </header>
+
+    <div id="continent-info" class="countries">
+    </div>
+    <div class="background-image"></div>
+
+    <script>
+        let currentContinent = null;
+        function toggleContinent(continent) {
+            const continentInfo = document.getElementById("continent-info");
+            const countriesByContinent = {
+                "Europa": ["Suíça", "Noruega", "Irlanda", "Espanha", "Dinamarca", "Inglaterra", "Holanda", "Portugal", "Suécia", "Itália", "Alemanha"],
+                "Ásia": ["Filipinas", "China", "Japão", "Vietnã", "Coreia do Sul"],
+                "Oceania": ["Nova Zelândia", "Austrália"],
+                "América": ["Canadá", "Estados Unidos", "México", "Brasil", "Argentina", "Costa Rica", "Jamaica", "Panamá", "Haiti"],
+                "África": ["Nigéria", "Zâmbia", "África do Sul", "Marrocos"]
+            };
+
+            if (continent === currentContinent) {
+                continentInfo.innerHTML = '';
+                continentInfo.style.display = 'none';
+                currentContinent = null;
+            } else {
+                continentInfo.style.display = 'flex';
+                continentInfo.innerHTML = '';
+                if (countriesByContinent[continent]) {
+                    const countries = countriesByContinent[continent];
+                    for (const country of countries) {
+                        const countryDiv = document.createElement('div');
+                        countryDiv.classList.add('country');
+                        countryDiv.innerHTML = `
+                            <a href="https://pt.wikipedia.org/wiki/${country}" target="_blank">
+                                <img src="./images/${country}.png" alt="${country}" width="80" height="60">
+                                <p>${country}</p>
+                            </a>
+                        `;
+                        continentInfo.appendChild(countryDiv);
+                    }
+                } else {
+                    continentInfo.textContent = "Nenhum país encontrado para este continente.";
+                }
+                currentContinent = continent;
+            }
+        }
+    </script>
+</body>
+
+</html>

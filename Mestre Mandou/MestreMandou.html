@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>O mestre mandou...</title>
+  </head>
+  <body>
+    <div id="conteudo">
+      <h2>O mestre mandou você me dar uns beijos, aceita?</h2>
+      <div style="margin: auto; width: 170px">
+        <button
+          style="position: fixed; display: block"
+          class="btn"
+          onclick="sim()"
+        >
+          SIM
+        </button>
+        <button
+          class="btn"
+          onclick="desvia(this)"
+          onmouseover="desvia(this)"
+          style="position: absolute"
+        >
+          NÃO
+        </button>
+      </div>
+      <!-- <div class="div1" style="margin-top: 450px;">
+            <a href="https://www.youtube.com/shorts/NcLf_34wcYY">clique aqui se vc não quiser (apenas por curiosidade)</a>
+        </div>
+    -->
+    <style>
+        
+        #conteudo {
+    background: url(img/2.jpg) no-repeat;
+    background-size: cover; 
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    text-align: center;
+    font-family: sans-serif;
+    color: #fff;
+}
+
+      .btn {
+        background: #fff;
+        color: #000;
+        border: none;
+        padding: 10px;
+        width: 80px;
+        border-radius: 5px;
+        font-weight: bold;
+
+      }
+
+      .div1 {
+        margin-top: 660px;
+      }
+    </style>
+    <script>
+      function sim() {
+        alert("Você aceitou dar uns beijos comigo! :)");
+        location.href = "https://music.youtube.com/watch?v=izGwDsrQ1eQ";
+      }
+
+      function desvia(btn) {
+        btn.style.position = "absolute";
+        btn.style.bottom = geraPosicao(10, 90);
+        btn.style.left = geraPosicao(10, 90);
+        console.log("opa, desviei...");
+      }
+
+      function geraPosicao(min, max) {
+        return Math.random() * (max - min) + min + "%";
+      }
+    </script>
+  </body>
+</html>
